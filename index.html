@@ -427,6 +427,7 @@
             border-radius: 6px;
             transition: all 0.3s;
             margin-top: auto;
+            cursor: pointer;
         }
         .btn-quote:hover {
             background-color: transparent;
@@ -557,6 +558,40 @@
             background: #555;
         }
 
+        .transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-base);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease-in-out;
+        }
+        .transition-overlay.show-bg {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .transition-text {
+            color: #fff;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .transition-overlay.show-text .transition-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 900px) {
             .destino-item.half-screen {
                 max-width: 100%;
@@ -564,66 +599,26 @@
         }
 
         @media (max-width: 768px) {
-            .topbar {
-                padding: 10px 20px;
-            }
-            .topbar-logo {
-                height: 45px;
-            }
-            .topbar-brand {
-                font-size: 0.9rem;
-                letter-spacing: 1px;
-            }
-            header {
-                padding-top: 100px;
-                min-height: 80vh;
-            }
-            .destino-frame {
-                height: auto;
-                min-height: 350px;
-                border-radius: 20px;
-            }
-            .destino-text-content {
-                padding: 30px 20px;
-            }
-            .fleet-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .vehicle-img {
-                height: 220px;
-            }
-            .image-containers {
-                grid-template-columns: 1fr;
-            }
-            .contact-card {
-                padding: 30px 20px;
-            }
-            .contact-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .section-title {
-                margin-bottom: 40px;
-            }
+            .topbar { padding: 10px 20px; }
+            .topbar-logo { height: 45px; }
+            .topbar-brand { font-size: 0.9rem; letter-spacing: 1px; }
+            header { padding-top: 100px; min-height: 80vh; }
+            .destino-frame { height: auto; min-height: 350px; border-radius: 20px; }
+            .destino-text-content { padding: 30px 20px; }
+            .fleet-grid { grid-template-columns: 1fr; gap: 20px; }
+            .vehicle-img { height: 220px; }
+            .image-containers { grid-template-columns: 1fr; }
+            .contact-card { padding: 30px 20px; }
+            .contact-row { flex-direction: column; gap: 15px; }
+            .section-title { margin-bottom: 40px; }
         }
 
         @media (max-width: 480px) {
-            .hero-text {
-                font-size: 2.2rem;
-            }
-            .destinos-main-title {
-                font-size: 2.5rem;
-            }
-            .destino-name {
-                font-size: 1.5rem;
-            }
-            .contact-card p {
-                font-size: 1rem;
-            }
-            .btn-whatsapp {
-                width: 100%;
-            }
+            .hero-text { font-size: 2.2rem; }
+            .destinos-main-title { font-size: 2.5rem; }
+            .destino-name { font-size: 1.5rem; }
+            .contact-card p { font-size: 1rem; }
+            .btn-whatsapp { width: 100%; }
         }
     </style>
 </head>
@@ -649,13 +644,10 @@
     </div>
 
     <header>
-        <div class="header-bg-container">
-            <img src="public/image_80013c.jpg" alt="Fondo Transporte">
-        </div>
         
         <div class="hero-content">
-            <h1 class="hero-text">Desarrollamos su logística de acuerdo a tus necesidades de transportacion en monterrey y la region</h1>
-            <p class="hero-subtext">Servicio de transporte por viaje y/o a disposición por horas</p>
+            <h1 class="hero-text">logística de acuerdo a tus necesidades de transportacion en monterrey y la region</h1>
+            <p class="hero-subtext">Servicio de transporte privado y especial            viaje y/o a disposición</p>
         </div>
     </header>
 
@@ -673,7 +665,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="destino-item">
             <div class="destino-frame">
@@ -710,11 +701,11 @@
         
         <div class="destino-item">
             <div class="destino-frame">
-                <a href="https://www.google.com/maps?q=Grutas+de+Bustamante+Nuevo+León+México" target="_blank" style="display:block; width:100%; height:100%; position:absolute; z-index:10;"></a>
-                <img src="public/grutas busta.png" alt="bio">
+                <a href="https://maps.app.goo.gl/j1P9x8BvqJxuro3T9" target="_blank" style="display:block; width:100%; height:100%; position:absolute; z-index:10;"></a>
+                <img src="public/arena.png" alt="bio">
                 <div class="destino-text-content">
-                    <h3 class="destino-name">Grutas de bustamante</h3>
-                    <p class="destino-details">Turismo</p>
+                    <h3 class="destino-name">Arena monterrey</h3>
+                    <p class="destino-details">Espectaculos</p>
                 </div>
             </div>
         </div>
@@ -765,7 +756,6 @@
         
         <div class="destino-item">
             <div class="destino-frame futbol-style">
-                <a href="https://www.google.com/maps?q=Estadio+de+Monterrey+Nuevo+León+México" target="_blank" style="display:block; width:100%; height:100%; position:absolute; z-index:10;"></a>
                 <img src="public/estadio.png" alt="bio">
                 <div class="destino-text-content">
                     <h3 class="destino-name">Estadio de Monterrey</h3>
@@ -790,8 +780,9 @@
     </div>
 
     <div class="container" id="fleet">
-        <h2 class="section-title">Nuestra Flota</h2> 
-        
+        <h2 class="section-title" style="margin-bottom: 10px;">Nuestra Flota</h2> 
+
+        <h3 class="destinos-category" style="margin-top: 30px;">Transporte de viajes</h3>
         <div class="fleet-grid">
             <div class="vehicle-card">
                 <div class="vehicle-img">
@@ -825,21 +816,6 @@
 
             <div class="vehicle-card">
                 <div class="vehicle-img">
-                    <img src="public/Jac.png" alt="JAC">
-                </div>
-                <div class="vehicle-info">
-                    <h3 class="vehicle-name">Minibus 16</h3>
-                    <ul class="vehicle-specs">
-                        <li>Capacidad: 16 Pasajeros</li>
-                        <li>Acabados Interiores Premium</li>
-                        <li>Eficiencia Logística</li>
-                    </ul>
-                    <a href="#contact" class="btn-quote">Solicitar Presupuesto</a>
-                </div>
-            </div>
-
-            <div class="vehicle-card">
-                <div class="vehicle-img">
                     <img src="public/suburban (2).png" alt="Suburban">
                 </div>
                 <div class="vehicle-info">
@@ -852,54 +828,87 @@
                     <a href="#contact" class="btn-quote">Solicitar Presupuesto</a>
                 </div>
             </div>
-        </div>
-
-        <div id="confidence-section" style="margin-top: 120px; text-align: center;">
-            <h2 class="section-title" style="margin-bottom: 20px;">Suba, confianza y seguridad</h2>
-            <p style="font-size: 1.4rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 50px; font-weight: 300; text-transform: uppercase; letter-spacing: 1px;">
-                Estaremos esperando en terminal aérea, unidad impecable y listo para su viaje.
-            </p>
             
-            <div class="video-container">
-                <video autoplay loop muted playsinline>
-                    <source src="public/auto.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <div id="gallery" style="margin-top: 150px;">
-            <h2 class="section-title">Nuestra Experiencia</h2>
-            <div class="image-containers">
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80" alt="Logística">
-                    <p>Logística Corporativa</p>
+            <div class="vehicle-card">
+                <div class="vehicle-img">
+                    <img src="public/jetta.png" alt="jetta">
                 </div>
-                <div class="image-container">
-                    <img src="public/td.png" alt="Unidades">
-                    <p>Unidades Recientes</p>
-                </div>
-                <div class="image-container">
-                    <img src="public/subp.png" alt="Servicio">
-                    <p>Servicio premium</p>
+                <div class="vehicle-info">
+                    <h3 class="vehicle-name">jetta </h3>
+                    <ul class="vehicle-specs">
+                        <li>Capacidad: 4 Pasajeros</li>
+                        <li>Acabados Interiores Premium</li>
+                        <li>Máxima Comodidad</li>
+                    </ul>
+                    <a href="#contact" class="btn-quote">Solicitar Presupuesto</a>
                 </div>
             </div>
         </div>
 
-        <div id="contact" style="margin-top: 150px;">
-            <h2 class="section-title">Inicia tu viaje</h2>
-            <div class="contact-card">
-                <div class="contact-row">
-                    <p><strong>CONTACTO:</strong></p>
-                    <a href="https://wa.me/528116933932" target="_blank" class="btn-whatsapp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.005-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                        </svg>
-                        Enviar Mensaje
-                    </a>
+        <h3 class="destinos-category">Rutas diarias de personal para empresa</h3>
+        <div class="fleet-grid">
+            <div class="vehicle-card" style="max-width: 400px;">
+                <div class="vehicle-img">
+                    <img src="public/Jac.png" alt="JAC">
                 </div>
-                <p><strong>CORREO:</strong> ventas@subatransportes.com</p>
-                <p><strong>UBICACIÓN:</strong> Monterrey, Nuevo León, México</p>
+                <div class="vehicle-info">
+                    <h3 class="vehicle-name">Minibus 16</h3>
+                    <ul class="vehicle-specs">
+                        <li>Capacidad: 16 Pasajeros</li>
+                        <li>Acabados Interiores Premium</li>
+                        <li>Eficiencia Logística</li>
+                    </ul>
+                    <a href="#contact" class="btn-quote">Solicitar Presupuesto</a>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div id="confidence-section" style="margin-top: 120px; text-align: center;">
+        <h2 class="section-title" style="margin-bottom: 20px;">Suba, confianza y seguridad</h2>
+        <p style="font-size: 1.4rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 50px; font-weight: 300; text-transform: uppercase; letter-spacing: 1px;">
+            Estaremos esperando en terminal aérea, unidad impecable y listo para su viaje.
+        </p>
+        
+        <div class="video-container">
+            <video autoplay loop muted playsinline>
+                <source src="public/auto.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div id="gallery" style="margin-top: 150px;">
+        <h2 class="section-title">Nuestra Experiencia</h2>
+        <div class="image-containers">
+            <div class="image-container">
+                <img src="public/minibus.png" alt="Logística">
+                <p>Logística Corporativa</p>
+            </div>
+            <div class="image-container">
+                <img src="public/td.png" alt="Unidades">
+                <p>Unidades Recientes</p>
+            </div>
+            <div class="image-container">
+                <img src="public/subp.png" alt="Servicio">
+                <p>Servicio premium</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" style="margin-top: 150px;">
+        <h2 class="section-title">Inicia tu viaje</h2>
+        <div class="contact-card">
+            <div class="contact-row">
+                <p><strong>CONTACTO:</strong></p>
+                <a href="https://wa.me/528116933932" target="_blank" class="btn-whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.005-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                    </svg>
+                    Enviar Mensaje
+                </a>
+            </div>
+            <p><strong>CORREO:</strong> ventas@subatransportes.com</p>
+            <p><strong>UBICACIÓN:</strong> Monterrey, Nuevo León, México</p>
         </div>
     </div>
 
@@ -907,6 +916,10 @@
         <h2 style="font-size: 2rem; color: #fff; margin-bottom: 20px; font-weight: 900; letter-spacing: 2px;">SUBA TRANSPORTES</h2>
         <p>© 2026 Monterrey, Nuevo León. Todos los derechos reservados.</p>
     </footer>
+
+    <div id="transition-overlay" class="transition-overlay">
+        <span class="transition-text">Buen Viaje</span>
+    </div>
 
     <script>
         function toggleSidebar(forceState) {
@@ -921,6 +934,27 @@
                 overlay.classList.toggle('active');
             }
         }
+
+        document.querySelectorAll('.btn-quote').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                
+                const overlay = document.getElementById('transition-overlay');
+                const targetId = this.getAttribute('href'); 
+                const targetSection = document.querySelector(targetId);
+
+                overlay.classList.add('show-bg');
+
+                setTimeout(() => {
+                    overlay.classList.add('show-text');
+                }, 600);
+
+                setTimeout(() => {
+                    targetSection.scrollIntoView({ behavior: 'auto' });
+                    overlay.classList.remove('show-bg', 'show-text');
+                }, 2200); 
+            });
+        });
     </script>
 </body>
 </html>
